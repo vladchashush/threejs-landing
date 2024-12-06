@@ -15,7 +15,6 @@ export function DuckModel() {
 				material={materials.Duck}
 				rotation={[-Math.PI / 2, 0, 0]}
 			>
-				{' '}
 				<meshStandardMaterial roughness={0.35} map={texture} />
 			</mesh>
 		</group>
