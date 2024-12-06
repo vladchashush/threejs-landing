@@ -4,6 +4,7 @@ import * as THREE from 'three'
 export function DuckModel() {
 	const { nodes, materials } = useGLTF('/models/duck.gltf')
 	const texture = useTexture('/models/textures/Duck_baseColor.png')
+	texture.flipY = false
 
 	return (
 		<group dispose={null}>
@@ -15,7 +16,7 @@ export function DuckModel() {
 				rotation={[-Math.PI / 2, 0, 0]}
 			>
 				{' '}
-				<meshStandardMaterial roughness={0.15} map={texture} />
+				<meshStandardMaterial roughness={0.35} map={texture} />
 			</mesh>
 		</group>
 	)
