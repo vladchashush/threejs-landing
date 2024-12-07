@@ -1,9 +1,10 @@
 'use client'
 import { TextSplitter } from '@/components/TextSplitter'
 import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import gsap from 'gsap'
 
-gsap.registerPlugin(useGSAP)
+gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 const Hero = () => {
 	useGSAP(() => {
@@ -34,6 +35,42 @@ const Hero = () => {
 				y: 10,
 				duration: 0.6
 			})
+
+		const scrollTl = gsap.timeline({
+			scrollTrigger: {
+				trigger: '.hero',
+				start: 'top top',
+				end: 'bottom bottom',
+				scrub: 1.5,
+				markers: true
+			}
+		})
+
+		scrollTl
+			.fromTo(
+				'.hero',
+				{
+					backgroundColor: '#FDE047'
+				},
+				{
+					backgroundColor: '#D9F99D',
+					overwrite: 'auto'
+				},
+				1
+			)
+			.from('.text-side-heading .split-char', {
+				scale: 1.3,
+				y: 40,
+				rotate: -25,
+				opacity: 0,
+				stagger: 0.1,
+				ease: 'back.out(3)',
+				duration: 0.5
+			})
+			.from('.text-side-body', {
+				y: 20,
+				opacity: 0
+			})
 	})
 
 	return (
@@ -52,12 +89,23 @@ const Hero = () => {
 							<div className='hero-subheading mt-12 text-5xl font-semibold text-sky-950 lg:text-6xl'>
 								just a little drop and you will know all
 							</div>
-							<div className='hero-body text-2xl font-normal text-sky-950'>
+							<div className='hero-body text-2xl my-8 font-normal text-sky-950'>
 								something to write
 							</div>
 							<button className='hero-button rounded-xl bg-orange-600 px-5 py-4 text-center text-xl font-bold uppercase tracking-wide text-white transition-colors duration-150 hover:bg-orange-700 md:text-2xl'>
 								button
 							</button>
+						</div>
+					</div>
+					<div className='text-side relative z-[80] grid h-screen items-center gap-4 md:grid-cols-2'>
+						<div>
+							<h2 className='text-side-heading text-balance text-6xl font-black uppercase text-sky-950 lg:text-8xl'>
+								<TextSplitter text='some what like text or something' />
+							</h2>
+							<div className='text-side-body mt-4 max-w-xl text-balance text-xl font-normal text-sky-950'>
+								Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque
+								similique saepe enim dolores optio dolorem nihil quos minima eiu
+							</div>
 						</div>
 					</div>
 				</div>
