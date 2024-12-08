@@ -3,11 +3,18 @@ import { TextSplitter } from '@/components/TextSplitter'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import gsap from 'gsap'
+import { View } from '@react-three/drei'
+import Scene from './Scene'
+import Blob from '@/components/Blob'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 const Hero = () => {
 	useGSAP(() => {
+		// const blobTL = gsap.timeline()
+		// blobTL.to('.body-blob', {
+		// 	rotate: 360
+		// })
 		const introTl = gsap.timeline()
 		introTl
 			.set('.hero', { opacity: 1 })
@@ -41,8 +48,7 @@ const Hero = () => {
 				trigger: '.hero',
 				start: 'top top',
 				end: 'bottom bottom',
-				scrub: 1.5,
-				markers: true
+				scrub: 1.5
 			}
 		})
 
@@ -76,6 +82,19 @@ const Hero = () => {
 	return (
 		<section className='hero opacity-0 px-4 first:pt-10 md:px-6'>
 			<div className='mx-auto flex w-full max-w-7xl flex-col items-center'>
+				<View className='hero-scene pointer-events-none sticky top-0 z-50  hidden -mt-[100vh] h-screen w-screen md:block'>
+					<Scene />
+				</View>
+				<div className='body-blob pointer-events-none sticky top-0 z-70  hidden -mt-[100vh] h-screen w-screen overflow-hidden md:block'>
+					<div className='mt-[10vh]   scale-x-[220%]'>
+						<Blob width='120vw' className='animate-spin-10' />
+					</div>
+				</div>
+				<div className='body-blob pointer-events-none sticky top-0 z-60  hidden -mt-[100vh] h-screen w-screen overflow-hidden md:block'>
+					<div className='mt-[40vh]  scale-x-[220%]'>
+						<Blob width='120vw' className='animate-spin-5' />
+					</div>
+				</div>
 				<div className='grid'>
 					<div className='grid h-screen place-items-center'>
 						<div className='grid auto-rows-min place-items-center text-center'>

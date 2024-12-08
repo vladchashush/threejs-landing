@@ -1,8 +1,9 @@
 'use client'
 
 import { Canvas } from '@react-three/fiber'
-import { DuckModel } from './prefabs/DuckModel'
-import { Environment, Float } from '@react-three/drei'
+import { View } from '@react-three/drei'
+import { Suspense } from 'react'
+import { Physics } from '@react-three/rapier'
 
 const ViewCanvas = () => {
 	return (
@@ -25,20 +26,11 @@ const ViewCanvas = () => {
 				fov: 30
 			}}
 		>
-			<Float
-				speed={0.3}
-				rotationIntensity={40}
-				floatIntensity={1}
-				floatingRange={[-0.5, 0.5]}
-			>
-				<DuckModel />
-			</Float>
-
-			{/* <mesh rotation={[0.5, 0.5, 0]} position={[1, 0, 0]}>
-				<boxGeometry />
-				<meshStandardMaterial color={'hotpink'} />
-			</mesh> */}
-			<Environment files='/hdr/lobby.hdr' environmentIntensity={1.5} />
+			<Suspense>
+				<Physics debug gravity={[0, 0, 0]}>
+					<View.Port />
+				</Physics>
+			</Suspense>
 		</Canvas>
 	)
 }
