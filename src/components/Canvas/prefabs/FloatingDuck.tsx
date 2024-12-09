@@ -2,7 +2,6 @@ import { Float } from '@react-three/drei'
 import { DuckModel } from './DuckModel'
 import { forwardRef, ReactNode } from 'react'
 import { Group } from 'three'
-import { RigidBody } from '@react-three/rapier'
 
 type FloatingDuckProps = {
 	floatingSpeed?: number
@@ -33,9 +32,7 @@ const FloatingDuck = forwardRef<Group, FloatingDuckProps>(
 					floatingRange={floatingRange}
 				>
 					{children}
-					<RigidBody colliders='trimesh'>
-						<DuckModel />
-					</RigidBody>
+					<DuckModel />
 				</Float>
 			</group>
 		)

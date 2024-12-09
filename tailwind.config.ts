@@ -13,8 +13,8 @@ const config: Config = {
 				foreground: 'var(--foreground)'
 			},
 			animation: {
-				'spin-5': 'spin-center 40s linear infinite',
-				'spin-10': 'spin-center 50s linear infinite'
+				'spin-5': 'spin-center 150s linear infinite',
+				'spin-10': 'spin-center 120s linear infinite'
 			},
 			keyframes: {
 				'spin-center': {

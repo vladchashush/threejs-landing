@@ -3,7 +3,6 @@
 import { Canvas } from '@react-three/fiber'
 import { View } from '@react-three/drei'
 import { Suspense } from 'react'
-import { Physics } from '@react-three/rapier'
 
 const ViewCanvas = () => {
 	return (
@@ -27,9 +26,7 @@ const ViewCanvas = () => {
 			}}
 		>
 			<Suspense>
-				<Physics debug gravity={[0, 0, 0]}>
-					<View.Port />
-				</Physics>
+				<View.Port />
 			</Suspense>
 		</Canvas>
 	)

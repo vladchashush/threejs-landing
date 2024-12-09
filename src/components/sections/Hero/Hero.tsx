@@ -6,15 +6,12 @@ import gsap from 'gsap'
 import { View } from '@react-three/drei'
 import Scene from './Scene'
 import Blob from '@/components/Blob'
+import { Bubbles } from './Bubbles'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 const Hero = () => {
 	useGSAP(() => {
-		// const blobTL = gsap.timeline()
-		// blobTL.to('.body-blob', {
-		// 	rotate: 360
-		// })
 		const introTl = gsap.timeline()
 		introTl
 			.set('.hero', { opacity: 1 })
@@ -53,6 +50,10 @@ const Hero = () => {
 		})
 
 		scrollTl
+			.to('.blob', {
+				top: '-40%',
+				stagger: 1
+			})
 			.fromTo(
 				'.hero',
 				{
@@ -84,23 +85,24 @@ const Hero = () => {
 			<div className='mx-auto flex w-full max-w-7xl flex-col items-center'>
 				<View className='hero-scene pointer-events-none sticky top-0 z-50  hidden -mt-[100vh] h-screen w-screen md:block'>
 					<Scene />
+					<Bubbles count={300} speed={2} repeat={true} />
 				</View>
-				<div className='body-blob pointer-events-none sticky top-0 z-70  hidden -mt-[100vh] h-screen w-screen overflow-hidden md:block'>
-					<div className='mt-[10vh]   scale-x-[220%]'>
-						<Blob width='120vw' className='animate-spin-10' />
+				<div className='body-blob-background pointer-events-none sticky top-0 z-70  -mt-[100vh] h-screen w-screen overflow-hidden block'>
+					<div className='blob fixed top-1/3 left-[50%] transform -translate-x-1/2'>
+						<Blob
+							className='animate-spin-10'
+							width={'400vw'}
+							height={'400vh'}
+						/>
 					</div>
 				</div>
-				<div className='body-blob pointer-events-none sticky top-0 z-60  hidden -mt-[100vh] h-screen w-screen overflow-hidden md:block'>
-					<div className='mt-[40vh]  scale-x-[220%]'>
-						<Blob width='120vw' className='animate-spin-5' />
-					</div>
-				</div>
+				<div className='body-blob pointer-events-none sticky top-0 z-60  hidden -mt-[100vh] h-screen w-screen overflow-hidden md:block'></div>
 				<div className='grid'>
 					<div className='grid h-screen place-items-center'>
 						<div className='grid auto-rows-min place-items-center text-center'>
 							<h1 className='hero-header text-7xl font-black uppercase leading-[.8] text-orange-500 md:text-[9rem] lg:text-[13rem]'>
 								<TextSplitter
-									text='test the taste'
+									text='duck your quack'
 									className='hero-header-word'
 									wordDisplayStyle='block'
 								/>

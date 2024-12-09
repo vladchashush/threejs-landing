@@ -14,10 +14,8 @@ const Scene = () => {
 	useGSAP(() => {
 		if (!duck1Ref.current || !duck2Ref.current) return
 
-		gsap.set(duck1Ref.current.position, { x: -1.8 })
-		gsap.set(duck1Ref.current.rotation, { z: -0.5 })
-		gsap.set(duck2Ref.current.position, { x: 1.8 })
-		gsap.set(duck2Ref.current.rotation, { z: 0.5 })
+		gsap.set(duck1Ref.current.position, { x: -1.8, y: -0.5 })
+		gsap.set(duck2Ref.current.position, { x: 1.8, y: -0.5 })
 	})
 
 	return (
