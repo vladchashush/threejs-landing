@@ -1,3 +1,5 @@
+'use client'
+
 import FloatingDuck from '@/components/Canvas/prefabs/FloatingDuck'
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
@@ -74,7 +76,14 @@ const Scene = () => {
 			<group ref={duck2GroupRef}>
 				<FloatingDuck ref={duck2Ref} />
 			</group>
-			<Environment files='/hdr/lobby.hdr' environmentIntensity={1.5} />
+			<Environment
+				files={
+					process.env.NODE_ENV === 'production'
+						? `${process.env.BASE_URL}/hdr/lobby.hdr`
+						: '/hdr/lobby.hdr'
+				}
+				environmentIntensity={1.5}
+			/>
 		</group>
 	)
 }

@@ -1,5 +1,3 @@
-'use client'
-
 import { useGLTF, useTexture } from '@react-three/drei'
 import * as THREE from 'three'
 
