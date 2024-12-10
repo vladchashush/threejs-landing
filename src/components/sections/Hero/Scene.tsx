@@ -79,7 +79,7 @@ const Scene = () => {
 			<Environment
 				files={
 					process.env.NODE_ENV === 'production'
-						? `${process.env.BASE_URL}/hdr/lobby.hdr`
+						? `${process.env.NEXT_PUBLIC_BASE_URL}/hdr/lobby.hdr`
 						: '/hdr/lobby.hdr'
 				}
 				environmentIntensity={1.5}

@@ -4,12 +4,12 @@ import * as THREE from 'three'
 export function DuckModel() {
 	const { nodes, materials } = useGLTF(
 		process.env.NODE_ENV === 'production'
-			? `${process.env.BASE_URL}/models/duck.gltf`
+			? `${process.env.NEXT_PUBLIC_BASE_URL}/models/duck.gltf`
 			: `/models/duck.gltf`
 	)
 	const texture = useTexture(
 		process.env.NODE_ENV === 'production'
-			? `${process.env.BASE_URL}/models/textures/Duck_baseColor.png`
+			? `${process.env.NEXT_PUBLIC_BASE_URL}/models/textures/Duck_baseColor.png`
 			: '/models/textures/Duck_baseColor.png'
 	)
 	texture.flipY = false
