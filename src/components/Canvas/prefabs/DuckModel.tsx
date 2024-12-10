@@ -1,9 +1,19 @@
+'use client'
+
 import { useGLTF, useTexture } from '@react-three/drei'
 import * as THREE from 'three'
 
 export function DuckModel() {
-	const { nodes, materials } = useGLTF('/models/duck.gltf')
-	const texture = useTexture('/models/textures/Duck_baseColor.png')
+	const { nodes, materials } = useGLTF(
+		process.env.NODE_ENV === 'production'
+			? `${process.env.BASE_URL}/models/duck.gltf`
+			: `/models/duck.gltf`
+	)
+	const texture = useTexture(
+		process.env.NODE_ENV === 'production'
+			? `${process.env.BASE_URL}/models/textures/Duck_baseColor.png`
+			: '/models/textures/Duck_baseColor.png'
+	)
 	texture.flipY = false
 
 	return (
