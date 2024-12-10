@@ -61,7 +61,7 @@ const Scene = () => {
 			.to(groupRef.current.rotation, { y: Math.PI * 2 })
 
 			.to(duck2Ref.current.position, { x: 1.8, y: -0.2, z: 0 }, 0)
-			.to(duck2Ref.current.rotation, { y: Math.PI * -2.3, z: -0.3 }, 0)
+			.to(duck2Ref.current.rotation, { y: Math.PI * -4.3, z: -0.3 }, 0)
 
 			.to(duck1Ref.current.position, { x: 0.8, y: -0.5, z: 0.5 }, 0)
 			.to(duck1Ref.current.rotation, { y: Math.PI * 2.3, z: 0.2 }, 0)
