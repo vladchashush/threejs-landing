@@ -29,4 +29,8 @@ export function DuckModel() {
 	)
 }
 
-useGLTF.preload('/models/duck.gltf')
+useGLTF.preload(
+	process.env.NODE_ENV === 'production'
+		? `${process.env.NEXT_PUBLIC_BASE_URL}/models/duck.gltf`
+		: `/models/duck.gltf`
+)
